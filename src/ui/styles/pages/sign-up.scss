@@ -1,0 +1,76 @@
+.sign-up {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    border-radius: 4px;
+    background: var(--gray7);
+    width: 608px;
+    height: 474px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 14px;
+
+    @media screen and (max-width: 1440px) {
+      width: 572px;
+      height: 450px;
+    }
+
+    @media screen and (max-width: 834px) {
+      width: 524px;
+      height: 442px;
+    }
+
+    @media screen and (max-width: 540px) {
+      width: 328px;
+      height: 410px;
+    }
+  }
+
+  &__title {
+    color: var(--secondary);
+  }
+
+  &__desc {
+    margin-top: 30px;
+
+    @media screen and (max-width: 1440px) {
+      margin-top: 18px;
+    }
+
+    @media screen and (max-width: 540px) {
+      margin-top: 12px;
+    }
+  }
+
+  &__inputs {
+    width: 340px;
+    margin-bottom: 32px;
+
+    @media screen and (max-width: 1440px) {
+      width: 300px;
+      margin-bottom: 22px;
+    }
+
+    @media screen and (max-width: 540px) {
+      width: 280px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__password {
+    position: relative;
+
+    svg {
+      position: absolute;
+      top: 12px;
+      right: 8px;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.button {
+  display: flex;
+  padding: 6px 20px;
+  align-items: center;
+  border-radius: 2px;
+  background: var(--primary, #0078d4);
+  color: var(--white);
+
+  &:hover {
+    background: #106ebe;
+    cursor: pointer;
+  }
+
+  &:active {
+    background: #005a9e;
+  }
+
+  &:disabled {
+    background: #f3f2f1;
+    color: var(--gray3);
+    cursor: not-allowed;
+  }
+}

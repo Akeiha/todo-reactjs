@@ -1,0 +1,30 @@
+@import "src/ui/styles/core/tokens.scss";
+@import "src/ui/styles/core/mixins.scss";
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--secondary);
+  color: var(--white);
+}
+
+.main {
+  position: relative;
+  top: 56px;
+  height: calc(100% - 138px);
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  @media screen and (max-width: 1440px) {
+    top: 48px;
+    height: calc(100% - 126px);
+  }
+
+  @media screen and (max-width: 440px) {
+    top: 85px;
+    height: calc(100% - 163px);
+  }
+
+  @include auth-sizing($maxSideNavSize, $middleSideNavSize);
+}

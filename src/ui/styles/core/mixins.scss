@@ -1,0 +1,17 @@
+@mixin auth-sizing($maxSize, $middleSize) {
+  &__auth {
+    width: calc(100% - $maxSize);
+    margin-left: $maxSize;
+    @content;
+
+    @media screen and (max-width: 1440px) {
+      width: calc(100% - $middleSize);
+      margin-left: $middleSize;
+    }
+
+    @media screen and (max-width: 834px) {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+}
