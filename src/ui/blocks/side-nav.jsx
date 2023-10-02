@@ -1,19 +1,33 @@
 import { useUnit } from "effector-react";
 import { NavLink } from "react-router-dom";
-import { isAutentificated } from "src/dict/mock";
-import { $isOpenedSideBar, setStateSideBarFn } from "src/models/App";
 import {
+  $isOpenedSideBar,
+  closeModalFn,
+  openModalFn,
+  setStateSideBarFn,
+} from "src/models/App";
+import { $userInfo } from "src/models/UserInfo";
+import {
+  CloseIconSVG,
   EditIconSVG,
   HomeIconSVG,
   SignOutIconSVG,
   ToDoIconSVG,
 } from "../images/svg";
+import { isActiveLink } from "src/dict/link";
+import { $isAutentificated, userLogOutFn } from "src/models/SignIn";
+import { Modal } from "../components/modal";
+import { Button } from "../components";
 
 import "src/ui/styles/blocks/side-nav.scss";
-import { isActiveLink } from "src/dict/link";
+import { isEmpty } from "src/dict/lodash";
 
 export function SideNav() {
-  const isOpenedSideBar = useUnit($isOpenedSideBar);
+  const [isOpenedSideBar, isAutentificated, { userPhoto }] = useUnit([
+    $isOpenedSideBar,
+    $isAutentificated,
+    $userInfo,
+  ]);
 
   const sideNavClassName = ["side-nav", "side-nav__desktop"];
 
@@ -21,18 +35,26 @@ export function SideNav() {
     sideNavClassName.push("side-nav__opened");
   }
 
+  const { email } = useUnit($userInfo);
+  const name = email.slice(0, 2);
+
   return (
     <>
       <div style={isAutentificated ? { display: "" } : { display: "none" }}>
         <div className={sideNavClassName.join(" ")}>
           <div className="profile">
-            <div className="profile__photo">
-              <p className="body2">NA</p>
+            <div className="profile-photo">
+              {isEmpty(userPhoto) ? (
+                <p className="body2">{name.toUpperCase()}</p>
+              ) : (
+                <img className="edit-profile-photo" src={userPhoto} alt="" />
+              )}
             </div>
 
-            <p className="profile__email caption1">name@BitPlatform.dev</p>
+            <p className="profile-email caption1">{email}</p>
 
             <NavLink
+              to="/edit-profile"
               className="caption1 profile__edit"
               onClick={() => setStateSideBarFn()}
             >
@@ -60,15 +82,41 @@ export function SideNav() {
               <ToDoIconSVG />
               Todos
             </NavLink>
-
-            <NavLink
-              to="/sign-out"
-              className={isActiveLink}
-              onClick={() => setStateSideBarFn()}
-            >
-              <SignOutIconSVG />
-              Sign out
-            </NavLink>
+            <div>
+              <button
+                className="link"
+                onClick={() => {
+                  setStateSideBarFn();
+                  openModalFn();
+                }}
+              >
+                <SignOutIconSVG />
+                Sign out
+              </button>
+              <Modal>
+                <div className="sign-out">
+                  <div className="sign-out__content ">
+                    <button className="close-svg" onClick={closeModalFn}>
+                      <CloseIconSVG />
+                    </button>
+                    <h2 className="sign-out__header">Sign out</h2>
+                    <p>Are you sure you want to sign out?</p>
+                    <div className="sign-out__buttons">
+                      <Button
+                        onClick={() => {
+                          userLogOutFn(), closeModalFn();
+                        }}
+                      >
+                        Sign Out
+                      </Button>
+                      <Button onClick={closeModalFn} className="close-button">
+                        Cancel
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </Modal>
+            </div>
           </nav>
         </div>
 

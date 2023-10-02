@@ -1,0 +1,28 @@
+.upload-input {
+  display: flex;
+  border-radius: 2px;
+  border: 1px solid var(--gray2);
+  background: var(--gray7);
+  padding: 13px 8px;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+  color: var(--black2);
+  cursor: pointer;
+
+  @media screen and (max-width: 1440px) {
+    padding: 10px 8px;
+  }
+
+  &:hover {
+    border-color: var(--black3);
+  }
+
+  &:focus {
+    border-color: var(--primary);
+  }
+
+  &__error {
+    border-color: #a4262c;
+  }
+}

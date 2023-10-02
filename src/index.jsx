@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { createRoot } from "react-dom/client";
+import { setCurrentWindowWidthFn } from "./models/App";
 
 import "src/ui/styles/core/_inheritance.scss";
 import "src/ui/styles/core/global.scss";
@@ -18,3 +19,7 @@ root.render(
     <App />
   </BrowserRouter>
 );
+
+window.addEventListener("resize", () => {
+  setCurrentWindowWidthFn(window.innerWidth);
+});

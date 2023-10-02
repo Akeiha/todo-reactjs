@@ -1,11 +1,14 @@
+import { useUnit } from "effector-react";
 import { LogoSVG, MenuSVG, SignInSVG, SignUpSVG } from "../images/svg";
 import { NavLink } from "react-router-dom";
-import { isAutentificated } from "src/dict/mock";
 import { setStateSideBarFn } from "src/models/App";
+import { $isAutentificated } from "src/models/SignIn";
 
 import "src/ui/styles/blocks/header.scss";
 
 export function Header() {
+  const isAutentificated = useUnit($isAutentificated);
+
   return (
     <>
       <header className="header-fixed">

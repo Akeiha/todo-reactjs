@@ -3,14 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "date-fns": "^2.30.0",
     "effector": "^22.8.6",
     "effector-forms": "^1.3.4",
     "effector-react": "^22.5.3",
+    "effector-storage": "^6.1.1",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
+    "react-datepicker": "^4.18.0",
     "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
+    "react-reveal": "^1.2.2",
     "react-router-dom": "^6.14.2",
     "react-scripts": "5.0.1",
-    "sass": "^1.50.0"
+    "sass": "^1.50.0",
+    "uuid": "^9.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,9 +1,12 @@
+import { useUnit } from "effector-react";
 import { GitHubSVG, InIconSVG, TwitterSVG, YouTubeSVG } from "../images/svg";
-import { isAutentificated } from "src/dict/mock";
+import { $isAutentificated } from "src/models/SignIn";
 
 import "src/ui/styles/blocks/footer.scss";
 
 export function Footer() {
+  const isAutentificated = useUnit($isAutentificated);
+
   return (
     <footer className={isAutentificated ? "footer footer__auth" : "footer"}>
       <div className="footer__content">

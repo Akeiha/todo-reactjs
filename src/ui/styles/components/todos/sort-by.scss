@@ -1,0 +1,51 @@
+.sort-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  color: var(--black2, #201f1e);
+  font-family: "Noto Sans", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.drop-down-container {
+  width: 111px;
+  height: 84px;
+  border-radius: 2px;
+  background: var(--gray7);
+  color: var(--black2);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  position: absolute;
+  left: -37px;
+  top: 30px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  transition: transform 0.15s linear;
+
+  button {
+    height: 20px;
+    width: 100%;
+    cursor: pointer;
+    text-align: start;
+
+    &:hover {
+      color: var(--black3);
+    }
+  }
+
+  &_open {
+    pointer-events: all;
+    transform: scale(1);
+  }
+
+  &_closed {
+    pointer-events: none;
+    transform: scale(0);
+  }
+}

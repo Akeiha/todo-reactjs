@@ -2,20 +2,42 @@ import { isEmpty } from "src/dict/lodash";
 
 import "src/ui/styles/components/checkbox.scss";
 
-export function Checkbox({ children, placeholder, type, field, value }) {
+export function Checkbox({
+  children,
+  placeholder,
+  onChange,
+  type,
+  field,
+  value,
+  name,
+}) {
   const error = !isEmpty(field) && field.errorText();
 
   return (
     <>
-      <div>
+      <div style={{ display: "flex", alignItems: "center" }}>
         <input
           id="c1"
-          checked={field.value}
+          checked={
+            !isEmpty(field)
+              ? type === "radio"
+                ? name === field.value
+                : field.value
+              : value
+          }
           type={type}
+          name={name}
           onChange={() => {
-            field.onChange(!field.value);
+            if (!isEmpty(field)) {
+              type === "radio"
+                ? field.onChange(name)
+                : field.onChange(!field.value);
+            } else {
+              onChange();
+            }
           }}
           placeholder={placeholder}
+          value={value}
         />
         <label for="c1" className="caption1">
           {children}

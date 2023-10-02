@@ -2,9 +2,13 @@
   border-radius: 2px;
   border: 1px solid var(--gray2);
   background: var(--gray7);
-  padding: 6px 8px;
+  padding: 6px 9px;
   width: 100%;
   color: var(--black2);
+
+  @media screen and (max-width: 1440px) {
+    padding: 6px 8px;
+  }
 
   &:hover {
     border-color: var(--black3);
@@ -13,10 +17,6 @@
   &:focus {
     border-color: var(--primary);
   }
-
-  // &:not(:focus):not(:placeholder-shown):invalid {
-  //   border-color: #a4262c;
-  // }
 
   &__error {
     border-color: #a4262c;

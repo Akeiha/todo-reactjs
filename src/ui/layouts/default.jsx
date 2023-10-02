@@ -1,9 +1,12 @@
 import { Outlet } from "react-router-dom";
 import { ScrollToTop } from "src/ui/components";
 import { Header, Footer, SideNav } from "../blocks";
-import { isAutentificated } from "src/dict/mock";
+import { $isAutentificated } from "src/models/SignIn";
+import { useUnit } from "effector-react";
 
 export function DefaultLayout() {
+  const isAutentificated = useUnit($isAutentificated);
+
   return (
     <>
       <ScrollToTop />
